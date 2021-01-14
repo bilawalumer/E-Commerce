@@ -28,6 +28,15 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        
+        Pusher.trigger('products-channel','new-product', {
+          id: @product.id,
+          name: @product.name,
+          price: @product.price,
+          description: @product.description,
+          attachment: @product.attachment.attachment
+        })
+
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else

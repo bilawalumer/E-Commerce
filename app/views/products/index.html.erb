@@ -64,7 +64,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <!-- Page content -->
 <div class="w3-content" style="max-width:1532px;">
 
-  <div class="w3-container w3-margin-top" id="products">
+  <div class="w3-container w3-margin-top">
     <h3>Products</h3>
   </div>
   
@@ -91,7 +91,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     </div>
   </div> %>
 
-  <div class="w3-row-padding w3-padding-16">
+  <div class="w3-row-padding w3-padding-16" id="products">
     <% @products.each do |product| %>
       <div class="w3-third w3-margin-bottom">
         <%= image_tag product.attachment, :alt=>"Norway", :style=>"width:100%" %>
@@ -146,6 +146,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
 </footer>
+
+ <script>
+    var channel = pusher.subscribe('products-channel');
+    channel.bind('new-product', function(data) {
+        
+        const attachment = data.attachment;
+        let id = data.id
+        let name = data.name;
+        let price = data.price;
+        let description = data.description;
+
+        let div = document.getElementById('products');
+        let new_content = document.createElement("div");
+        new_content.innerHTML = `
+         <div class="w3-third w3-margin-bottom">
+          <img class="image" src="<%= rails_blob_url("abc") %>" style="width:100%">
+        <div class="w3-container w3-white">
+          <h3>${name}</h3>
+          <h6 class="w3-opacity">From $${price}</h6>
+          <p>${description}</p>
+          <button class="w3-button w3-block w3-black w3-margin-bottom">Add to cart</button>
+        </div>
+      </div>`;
+        div.append(new_content);
+    });
+    </script> 
 
 </body>
 </html>
