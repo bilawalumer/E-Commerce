@@ -1,8 +1,8 @@
 class SignupMailJob < ApplicationJob
   queue_as :default
   
-  def perform(user)
-    UsersMailer.welcome_email(user)z.deliver
+  def perform_later(user)
+    UsersMailer.welcome_email(user).deliver
   end
   
 end
