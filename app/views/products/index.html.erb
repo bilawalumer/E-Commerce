@@ -151,7 +151,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     var channel = pusher.subscribe('products-channel');
     channel.bind('new-product', function(data) {
         
-        const attachment = data.attachment;
+        let attachment = data.attachment;
         let id = data.id
         let name = data.name;
         let price = data.price;
@@ -161,7 +161,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
         let new_content = document.createElement("div");
         new_content.innerHTML = `
          <div class="w3-third w3-margin-bottom">
-          <img class="image" src="<%= rails_blob_url("abc") %>" style="width:100%">
+          <img class="image" src="${attachment}" style="width:100%">
         <div class="w3-container w3-white">
           <h3>${name}</h3>
           <h6 class="w3-opacity">From $${price}</h6>
