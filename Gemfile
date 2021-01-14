@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem 'dotenv-rails'
+gem 'sidekiq'
+gem 'redis-namespace'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
