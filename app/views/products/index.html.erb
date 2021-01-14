@@ -18,7 +18,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
   <a href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
   <% if user_signed_in? %>
     <%= link_to 'Add Product', new_product_path, :class=>"w3-bar-item w3-button w3-mobile"%>
-    <%= link_to current_user.email, edit_user_registration_path, :class => 'w3-bar-item w3-button w3-right w3-light-grey w3-mobile' %>
+    <%= link_to current_user.name, edit_user_registration_path, :class => 'w3-bar-item w3-button w3-right w3-light-grey w3-mobile' %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'w3-bar-item w3-button w3-right w3-light-grey w3-mobile'  %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path, :class => 'w3-bar-item w3-button w3-right w3-light-grey w3-mobile' %>
