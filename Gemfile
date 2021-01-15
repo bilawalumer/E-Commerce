@@ -27,6 +27,7 @@ gem 'dotenv-rails'
 gem 'sidekiq'
 gem 'redis-namespace'
 gem 'pusher'
+gem 'cancancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

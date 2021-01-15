@@ -2,5 +2,8 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
+<% if can? :show, @product %>
+ <%= link_to 'Show', @product %> |
+<% end %>
+
 <%= link_to 'Back', products_path %>
