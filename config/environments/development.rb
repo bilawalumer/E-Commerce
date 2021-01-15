@@ -9,16 +9,19 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "user"
+  config.active_job.queue_name_delimiter = "_"
+  
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
 
   config.action_mailer.smtp_settings = {
-    user_name:      ENV['USER_NAME'],
-    password:       ENV['USER_PASSWORD'],
-    domain:         ENV['MAIL_HOST'],
+    user_name:      ENV['MAIL_USER_NAME'],
+    password:       ENV['MAIL_USER_PASSWORD'],
     address:        ENV['MAIL_HOST'],
-    port:          '2525',
+    domain:         ENV['MAIL_HOST'],
+    port:           '2525',
     authentication: :cram_md5,
   }
 
