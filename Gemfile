@@ -28,6 +28,8 @@ gem 'sidekiq'
 gem 'redis-namespace'
 gem 'pusher'
 gem 'cancancan'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
