@@ -12,7 +12,7 @@
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
-<% if can? :edit, product %>
+<% if can? :edit, @product %>
   <%= link_to 'Edit', edit_product_path(@product) %> |
 <% end %>
 <%= link_to 'Back', products_path %>
