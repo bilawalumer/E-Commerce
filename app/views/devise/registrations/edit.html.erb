@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= select_tag(:role, options_for_select([['Admin', 'admin'], ['User', 'user'], :role]) ) %>
+    <%= select_tag(:role, options_for_select([['Admin', 'admin'], ['User', 'user']]) ) %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
