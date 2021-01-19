@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
+  adapter: sqlite3
+  database: estore_production
   username: myapp
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
