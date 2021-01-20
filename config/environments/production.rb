@@ -12,6 +12,23 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :sidekiq
 
+  config.active_job.queue_name_prefix = "user"
+  config.active_job.queue_name_delimiter = "_"
+  
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    user_name:            ENV['MAIL_USER_NAME'],
+    password:             ENV['MAIL_USER_PASSWORD'],
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    port:                  587,
+    authentication:       'plain',
+    enable_starttls_auto:  true,
+    openssl_verify_mode:   'none'
+  }
+  
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
