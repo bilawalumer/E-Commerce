@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
   username: postgres
   password: postgres
@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  adapter: sqlite3
+  adapter: postgresql
   database: estore_production
   username: myapp
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
