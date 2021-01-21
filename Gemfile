@@ -30,11 +30,12 @@ gem 'pusher'
 gem 'cancancan'
 gem "unicorn"
 gem 'rack-timeout', '0.3.2'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2'
+# gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
