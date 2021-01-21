@@ -28,6 +28,7 @@ gem 'sidekiq'
 gem 'redis-namespace'
 gem 'pusher'
 gem 'cancancan'
+gem "unicorn"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -60,6 +61,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem "unicorn"
   gem "sqlite3"
 end

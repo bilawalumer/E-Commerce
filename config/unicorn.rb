@@ -1,28 +1,20 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-  timeout 15
-  preload_app true
+# set path to application
+app_dir = File.expand_path("../..", __FILE__)
+shared_dir = "#{app_dir}/shared"
+working_directory app_dir
 
-  listen '/var/www/html/E-Commerce/tmp/unicorn.sock' 
-  pid    '/var/www/html/E-Commerce/tmp/unicorn.pid'
 
-  before_fork do |server, worker|
-    Signal.trap 'TERM' do
-      puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
-      Process.kill 'QUIT', Process.pid
-    end
+# Set unicorn options
+worker_processes 2
+preload_app true
+timeout 30
 
-    defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.connection.disconnect!
-  end
+# Set up socket location
+listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
 
-  after_fork do |server, worker|
-    Signal.trap 'TERM' do
-      puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
-    end
+# Logging
+stderr_path "#{shared_dir}/log/unicorn.stderr.log"
+stdout_path "#{shared_dir}/log/unicorn.stdout.log"
 
-    defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.establish_connection
-  end
-
-  stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-  stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
+# Set master PID location
+pid "#{shared_dir}/pids/unicorn.pid"
