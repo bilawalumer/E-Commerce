@@ -31,6 +31,7 @@ gem 'cancancan'
 gem "unicorn"
 gem 'rack-timeout', '0.3.2'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'uglifier', '>= 1.3.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
